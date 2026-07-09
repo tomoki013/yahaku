@@ -1,0 +1,24 @@
+name: Yohaku
+options:
+  bundleIdPrefix: com.yohaku
+  deploymentTarget:
+    iOS: "17.0"
+  developmentLanguage: en
+targets:
+  Yohaku:
+    type: application
+    platform: iOS
+    sources:
+      - Yohaku
+    info:
+      path: Yohaku/Info.plist
+      properties:
+        CFBundleDisplayName: Yohaku
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+    settings:
+      base:
+        SWIFT_VERSION: "5.9"
+        TARGETED_DEVICE_FAMILY: "1"
+        LOCALIZATION_PREFERS_STRING_CATALOGS: YES
