@@ -6,7 +6,7 @@ struct EmptyStateView: View {
     var body: some View {
         Text(message)
             .font(.subheadline)
-            .foregroundStyle(.gray)
+            .foregroundStyle(.secondary)
             .multilineTextAlignment(.center)
             .frame(maxWidth: .infinity)
             .padding(.vertical, 48)

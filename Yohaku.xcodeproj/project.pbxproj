@@ -7,34 +7,42 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		012BE91CE516F1A5D2EC1761 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF7E8F9029F435EED2B26CF /* NotificationManager.swift */; };
+		1691D8642BC97A213D44EBA9 /* AppearanceMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EBB3AC8EAA0431723B3466 /* AppearanceMode.swift */; };
 		3729F63AB22D174F4364BE4E /* PatternView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7357DD0E09DDA99FF742513E /* PatternView.swift */; };
 		3CFAE99A42E88DC224AE2DBE /* AddYohakuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6EA2DC1850379A76048D35 /* AddYohakuView.swift */; };
 		3DCDECDB3ADBF80334B8856F /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE43DAE1E6617C993B05CD1 /* TodayView.swift */; };
 		3FE61772F8CF28D995E60E1F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 6EB770627E34D2560B52F828 /* Localizable.xcstrings */; };
 		440F3BBA3B399522507C3F48 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870B6E792B885AD5F5EDA693 /* WeekView.swift */; };
 		598FC3D9D83CDC3352441417 /* YohakuBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1A4A4F61195C5164C7DE79 /* YohakuBlock.swift */; };
+		71F636D3B3FC8A5EC5A9ADFA /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544AC5F6DB36E0A0513978DF /* AboutView.swift */; };
 		785D8A267EB3FBF192930277 /* RootTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AC1F0D5843EABED8542210 /* RootTabView.swift */; };
 		834D621AE258F5DE34DAA205 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FD93A888C50554836CA837 /* EmptyStateView.swift */; };
 		875ACA2E68BB1DE03ACC605C /* YohakuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDCDDF786D1144B611B3E24 /* YohakuApp.swift */; };
 		B68E5AE9300622F4FE8A6733 /* YohakuBlockCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3388FFBA7CB6D1E613CE085A /* YohakuBlockCard.swift */; };
-		EF7AECAFE0FF8B0F65B9A263 /* PatternGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4D3AB2750415B13186C7D6 /* PatternGridView.swift */; };
+		B71E8A71E066B573F3B8F8D1 /* BrandMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B521A3F6BD4673EE055EBF /* BrandMark.swift */; };
+		F3A5EAEE03304D28D6902C83 /* AppearanceApplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F377889FA31EAA5176245A /* AppearanceApplier.swift */; };
 		F7E84CE573C51AA864B511AB /* DateHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A9E89FFD6C51B7C9B71B07 /* DateHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3388FFBA7CB6D1E613CE085A /* YohakuBlockCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YohakuBlockCard.swift; sourceTree = "<group>"; };
+		544AC5F6DB36E0A0513978DF /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		69AC1F0D5843EABED8542210 /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabView.swift; sourceTree = "<group>"; };
-		6C4D3AB2750415B13186C7D6 /* PatternGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternGridView.swift; sourceTree = "<group>"; };
 		6EB770627E34D2560B52F828 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		7357DD0E09DDA99FF742513E /* PatternView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternView.swift; sourceTree = "<group>"; };
 		78A9E89FFD6C51B7C9B71B07 /* DateHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelpers.swift; sourceTree = "<group>"; };
 		7A1A4A4F61195C5164C7DE79 /* YohakuBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YohakuBlock.swift; sourceTree = "<group>"; };
+		7AF7E8F9029F435EED2B26CF /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		870B6E792B885AD5F5EDA693 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
 		98FD93A888C50554836CA837 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		99F377889FA31EAA5176245A /* AppearanceApplier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceApplier.swift; sourceTree = "<group>"; };
 		BF5D4DBEDAD84CBC80FD3689 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		CE5F4974B81AF775AFB52DD1 /* Yohaku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yohaku.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4EBB3AC8EAA0431723B3466 /* AppearanceMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceMode.swift; sourceTree = "<group>"; };
+		CE5F4974B81AF775AFB52DD1 /* Yohaku.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Yohaku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA6EA2DC1850379A76048D35 /* AddYohakuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddYohakuView.swift; sourceTree = "<group>"; };
 		DBDCDDF786D1144B611B3E24 /* YohakuApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YohakuApp.swift; sourceTree = "<group>"; };
+		E3B521A3F6BD4673EE055EBF /* BrandMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandMark.swift; sourceTree = "<group>"; };
 		ECE43DAE1E6617C993B05CD1 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -42,7 +50,10 @@
 		01B45316D7FCC53D495E6686 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				99F377889FA31EAA5176245A /* AppearanceApplier.swift */,
+				C4EBB3AC8EAA0431723B3466 /* AppearanceMode.swift */,
 				78A9E89FFD6C51B7C9B71B07 /* DateHelpers.swift */,
+				7AF7E8F9029F435EED2B26CF /* NotificationManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -58,6 +69,7 @@
 		21688F6D52F046D2FCB6B29E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				544AC5F6DB36E0A0513978DF /* AboutView.swift */,
 				DA6EA2DC1850379A76048D35 /* AddYohakuView.swift */,
 				7357DD0E09DDA99FF742513E /* PatternView.swift */,
 				69AC1F0D5843EABED8542210 /* RootTabView.swift */,
@@ -84,8 +96,8 @@
 		A2354F1AEEB0C08854B161C0 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				E3B521A3F6BD4673EE055EBF /* BrandMark.swift */,
 				98FD93A888C50554836CA837 /* EmptyStateView.swift */,
-				6C4D3AB2750415B13186C7D6 /* PatternGridView.swift */,
 				3388FFBA7CB6D1E613CE085A /* YohakuBlockCard.swift */,
 			);
 			path = Components;
@@ -143,7 +155,9 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 2660;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = 8F79A16D499CED083840D6BA /* Build configuration list for PBXProject "Yohaku" */;
 			developmentRegion = en;
@@ -197,10 +211,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71F636D3B3FC8A5EC5A9ADFA /* AboutView.swift in Sources */,
 				3CFAE99A42E88DC224AE2DBE /* AddYohakuView.swift in Sources */,
+				F3A5EAEE03304D28D6902C83 /* AppearanceApplier.swift in Sources */,
+				1691D8642BC97A213D44EBA9 /* AppearanceMode.swift in Sources */,
+				B71E8A71E066B573F3B8F8D1 /* BrandMark.swift in Sources */,
 				F7E84CE573C51AA864B511AB /* DateHelpers.swift in Sources */,
 				834D621AE258F5DE34DAA205 /* EmptyStateView.swift in Sources */,
-				EF7AECAFE0FF8B0F65B9A263 /* PatternGridView.swift in Sources */,
+				012BE91CE516F1A5D2EC1761 /* NotificationManager.swift in Sources */,
 				3729F63AB22D174F4364BE4E /* PatternView.swift in Sources */,
 				785D8A267EB3FBF192930277 /* RootTabView.swift in Sources */,
 				3DCDECDB3ADBF80334B8856F /* TodayView.swift in Sources */,
@@ -218,7 +236,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -250,10 +267,8 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 7GU925RQ99;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -267,7 +282,6 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
@@ -279,14 +293,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = 7GU925RQ99;
 				INFOPLIST_FILE = Yohaku/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.personal.yohaku;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yohaku.Yohaku;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.9;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -298,14 +311,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = 7GU925RQ99;
 				INFOPLIST_FILE = Yohaku/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.personal.yohaku;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yohaku.Yohaku;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.9;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -316,7 +328,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -348,10 +359,8 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 7GU925RQ99;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -372,7 +381,6 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
