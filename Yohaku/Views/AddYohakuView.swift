@@ -216,8 +216,11 @@ struct AddYohakuView: View {
                 endTime: onSelectedDay(endTime)
             )
             modelContext.insert(block)
-            NotificationManager.requestAuthorization()
-            NotificationManager.schedule(for: block)
+            NotificationManager.requestInitialAuthorizationIfNeeded { granted in
+                if granted {
+                    NotificationManager.schedule(for: block)
+                }
+            }
         }
         dismiss()
     }

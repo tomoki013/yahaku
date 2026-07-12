@@ -16,3 +16,19 @@ struct BrandMark: View {
         .accessibilityHidden(true)
     }
 }
+
+// ガラス背景なしで左上に置くためのツールバー項目(押せる見た目にしない)
+struct BrandToolbarItem: ToolbarContent {
+    var body: some ToolbarContent {
+        if #available(iOS 26.0, *) {
+            ToolbarItem(placement: .topBarLeading) {
+                BrandMark()
+            }
+            .sharedBackgroundVisibility(.hidden)
+        } else {
+            ToolbarItem(placement: .topBarLeading) {
+                BrandMark()
+            }
+        }
+    }
+}

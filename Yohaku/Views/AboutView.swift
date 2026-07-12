@@ -2,9 +2,8 @@ import SwiftUI
 import SwiftData
 
 enum AppInfo {
-    // TODO: 公開時に実際のURLに差し替える
-    static let privacyPolicyURL = URL(string: "https://example.com/yohaku/privacy")!
-    static let termsURL = URL(string: "https://example.com/yohaku/terms")!
+    static let privacyPolicyURL = URL(string: "https://yohaku.tmkch.io/privacy")!
+    static let termsURL = URL(string: "https://yohaku.tmkch.io/terms")!
 
     static var version: String {
         Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "1.0"
@@ -13,8 +12,10 @@ enum AppInfo {
 
 struct AboutView: View {
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.openURL) private var openURL
     @AppStorage("appearanceMode") private var appearanceMode = AppearanceMode.system.rawValue
-    @AppStorage("notificationsEnabled") private var notificationsEnabled = true
+    @AppStorage("notificationsEnabled") private var notificationsEnabled = false
+    @State private var isShowingDeniedAlert = false
     @Query private var blocks: [YohakuBlock]
 
     var body: some View {
@@ -43,8 +44,15 @@ struct AboutView: View {
                         .padding(.vertical, 14)
                         .onChange(of: notificationsEnabled) { _, enabled in
                             if enabled {
-                                NotificationManager.requestAuthorization()
-                                NotificationManager.rescheduleAll(blocks)
+                                NotificationManager.requestAuthorization { granted in
+                                    if granted {
+                                        NotificationManager.rescheduleAll(blocks)
+                                    } else {
+                                        // OS 側で拒否されている場合は設定アプリへ誘導する
+                                        notificationsEnabled = false
+                                        isShowingDeniedAlert = true
+                                    }
+                                }
                             } else {
                                 NotificationManager.cancelAll()
                             }
@@ -89,6 +97,16 @@ struct AboutView: View {
                 .padding(24)
             }
             .background(Color(.systemBackground))
+            .alert("notification.denied.title", isPresented: $isShowingDeniedAlert) {
+                Button("action.open_settings") {
+                    if let url = URL(string: UIApplication.openSettingsURLString) {
+                        openURL(url)
+                    }
+                }
+                Button("action.close", role: .cancel) {}
+            } message: {
+                Text("notification.denied.message")
+            }
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button {

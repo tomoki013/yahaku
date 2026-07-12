@@ -6,6 +6,7 @@ struct WeekView: View {
     var onSelectDay: (Date) -> Void = { _ in }
     @State private var displayedWeek = Date()
     @State private var isShowingInfo = false
+    @State private var slideDirection = 1
 
     private var weekDays: [Date] {
         DateHelpers.daysOfWeek(containing: displayedWeek)
@@ -28,22 +29,16 @@ struct WeekView: View {
 
                     weekSelector
 
-                    if hasAnyBlockThisWeek {
-                        VStack(spacing: 0) {
-                            ForEach(weekDays, id: \.self) { day in
-                                dayRow(day)
-                                if day != weekDays.last {
-                                    Divider()
-                                        .overlay(Color.primary.opacity(0.1))
-                                }
-                            }
-                        }
-                    } else {
-                        EmptyStateView(message: "empty.week")
+                    // id を週にして差し替え、横スライドの遷移で滑らかに切り替える
+                    ZStack(alignment: .top) {
+                        weekContent
+                            .id(weekDays.first)
+                            .transition(pageTransition)
                     }
                 }
                 .padding(24)
             }
+            .scrollBounceBehavior(.basedOnSize)
             .simultaneousGesture(
                 DragGesture(minimumDistance: 30)
                     .onEnded { value in
@@ -57,9 +52,7 @@ struct WeekView: View {
             )
             .background(Color(.systemBackground))
             .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    BrandMark()
-                }
+                BrandToolbarItem()
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         isShowingInfo = true
@@ -74,6 +67,31 @@ struct WeekView: View {
                 AboutView()
             }
         }
+    }
+
+    private var weekContent: some View {
+        Group {
+            if hasAnyBlockThisWeek {
+                VStack(spacing: 0) {
+                    ForEach(weekDays, id: \.self) { day in
+                        dayRow(day)
+                        if day != weekDays.last {
+                            Divider()
+                                .overlay(Color.primary.opacity(0.1))
+                        }
+                    }
+                }
+            } else {
+                EmptyStateView(message: "empty.week")
+            }
+        }
+    }
+
+    private var pageTransition: AnyTransition {
+        .asymmetric(
+            insertion: .move(edge: slideDirection > 0 ? .trailing : .leading).combined(with: .opacity),
+            removal: .move(edge: slideDirection > 0 ? .leading : .trailing).combined(with: .opacity)
+        )
     }
 
     private var weekSelector: some View {
@@ -112,7 +130,9 @@ struct WeekView: View {
     }
 
     private func shiftWeek(by value: Int) {
-        if let shifted = Calendar.current.date(byAdding: .weekOfYear, value: value, to: displayedWeek) {
+        guard let shifted = Calendar.current.date(byAdding: .weekOfYear, value: value, to: displayedWeek) else { return }
+        slideDirection = value
+        withAnimation(.easeOut(duration: 0.28)) {
             displayedWeek = shifted
         }
     }

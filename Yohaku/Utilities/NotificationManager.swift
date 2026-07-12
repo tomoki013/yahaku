@@ -2,12 +2,38 @@ import Foundation
 import UserNotifications
 
 enum NotificationManager {
+    private static let enabledKey = "notificationsEnabled"
+
     static var isEnabled: Bool {
-        (UserDefaults.standard.object(forKey: "notificationsEnabled") as? Bool) ?? true
+        (UserDefaults.standard.object(forKey: enabledKey) as? Bool) ?? false
     }
 
-    static func requestAuthorization() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { _, _ in }
+    // トグルが一度でも確定したか(初回許可の結果、または明示的な操作)
+    private static var hasStoredPreference: Bool {
+        UserDefaults.standard.object(forKey: enabledKey) != nil
+    }
+
+    // 最初の余白が置かれた時だけ許可を求め、許可されたらトグルをオンにする。
+    // 一度オフが確定した後は何もしない(明示的なオフを尊重する)
+    static func requestInitialAuthorizationIfNeeded(completion: @escaping (Bool) -> Void) {
+        guard !hasStoredPreference else {
+            completion(isEnabled)
+            return
+        }
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { granted, _ in
+            DispatchQueue.main.async {
+                UserDefaults.standard.set(granted, forKey: enabledKey)
+                completion(granted)
+            }
+        }
+    }
+
+    // トグルをオンにした時に呼ぶ。OS のポップは未確定の時しか出ず、
+    // 確定済みなら既存の許可状態がそのまま返る
+    static func requestAuthorization(completion: @escaping (Bool) -> Void) {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { granted, _ in
+            DispatchQueue.main.async { completion(granted) }
+        }
     }
 
     static func schedule(for block: YohakuBlock) {
