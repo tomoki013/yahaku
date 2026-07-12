@@ -157,6 +157,9 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					7A6E7ADDCFC11D0286209E9B = {
+						DevelopmentTeam = 7GU925RQ99;
+					};
 				};
 			};
 			buildConfigurationList = 8F79A16D499CED083840D6BA /* Build configuration list for PBXProject "Yohaku" */;
@@ -293,6 +296,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 7GU925RQ99;
 				INFOPLIST_FILE = Yohaku/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -311,6 +315,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 7GU925RQ99;
 				INFOPLIST_FILE = Yohaku/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
