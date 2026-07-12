@@ -16,3 +16,26 @@ struct BrandMark: View {
         .accessibilityHidden(true)
     }
 }
+
+// ガラス背景なしで左上に置くためのツールバー項目(押せる見た目にしない)
+struct BrandToolbarItem: ToolbarContent {
+    var body: some ToolbarContent {
+        // sharedBackgroundVisibility は iOS 26 SDK(Swift 6.2)以降にのみ存在する
+        #if compiler(>=6.2)
+        if #available(iOS 26.0, *) {
+            ToolbarItem(placement: .topBarLeading) {
+                BrandMark()
+            }
+            .sharedBackgroundVisibility(.hidden)
+        } else {
+            ToolbarItem(placement: .topBarLeading) {
+                BrandMark()
+            }
+        }
+        #else
+        ToolbarItem(placement: .topBarLeading) {
+            BrandMark()
+        }
+        #endif
+    }
+}

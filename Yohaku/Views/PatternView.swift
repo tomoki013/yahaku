@@ -22,17 +22,13 @@ struct PatternView: View {
                         NebulaCanvas(blocks: blocks, ink: .primary)
                             .frame(height: 400)
                             .accessibilityHidden(true)
-
-                        shareButton
                     }
                 }
                 .padding(24)
             }
             .background(Color(.systemBackground))
             .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    BrandMark()
-                }
+                BrandToolbarItem()
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         isShowingInfo = true
@@ -118,37 +114,6 @@ struct PatternView: View {
         }
     }
 
-    // MARK: - 共有
-
-    private var shareButton: some View {
-        HStack {
-            Spacer()
-            ShareLink(item: shareImage, preview: SharePreview("Yohaku", image: shareImage)) {
-                Image(systemName: "square.and.arrow.up")
-                    .font(.body)
-                    .foregroundStyle(.secondary)
-                    .frame(width: 44, height: 44)
-                    .contentShape(Rectangle())
-            }
-            .accessibilityLabel(Text("pattern.share"))
-        }
-    }
-
-    private var shareImage: Image {
-        let renderer = ImageRenderer(content: NebulaShareView(
-            blocks: blocks,
-            totalLine: String(
-                format: NSLocalizedString("pattern.total %@", comment: ""),
-                hoursString(totalHours)
-            )
-        ))
-        renderer.scale = 3
-        renderer.proposedSize = ProposedViewSize(width: 360, height: 450)
-        if let uiImage = renderer.uiImage {
-            return Image(uiImage: uiImage)
-        }
-        return Image(systemName: "circle")
-    }
 }
 
 // MARK: - 墨の星雲(ひとつの余白 = ひと滴の墨。中心から外へ育つ)
@@ -216,37 +181,6 @@ struct NebulaCanvas: View {
     private static func random(_ seed: inout UInt64) -> Double {
         seed = seed &* 6364136223846793005 &+ 1442695040888963407
         return Double((seed >> 33) % 100000) / 100000
-    }
-}
-
-// MARK: - 共有用の一枚(白地に墨、ワードマーク入り)
-
-struct NebulaShareView: View {
-    let blocks: [YohakuBlock]
-    let totalLine: String
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            HStack(spacing: 7) {
-                Circle()
-                    .fill(Color.black)
-                    .frame(width: 6, height: 6)
-                Text(verbatim: "Yohaku")
-                    .font(.system(size: 16, weight: .semibold, design: .serif))
-                    .tracking(1.5)
-                    .foregroundStyle(.black)
-            }
-
-            NebulaCanvas(blocks: blocks, ink: .black)
-                .frame(maxHeight: .infinity)
-
-            Text(verbatim: totalLine)
-                .font(.footnote)
-                .foregroundStyle(.gray)
-        }
-        .padding(28)
-        .frame(width: 360, height: 450)
-        .background(Color.white)
     }
 }
 

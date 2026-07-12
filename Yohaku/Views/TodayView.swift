@@ -10,6 +10,7 @@ struct TodayView: View {
     @State private var isShowingInfo = false
     @State private var editing: YohakuBlock?
     @State private var releasing: YohakuBlock?
+    @State private var slideDirection = 1
 
     private var dayBlocks: [YohakuBlock] {
         blocks.filter { DateHelpers.isSameDay($0.date, displayedDay) }
@@ -25,37 +26,16 @@ struct TodayView: View {
                 VStack(alignment: .leading, spacing: 24) {
                     daySelector
 
-                    if dayBlocks.isEmpty {
-                        EmptyStateView(message: isToday ? "empty.today" : "empty.day")
-
-                        ghostAddCard
-                    } else {
-                        VStack(spacing: 12) {
-                            ForEach(dayBlocks) { block in
-                                YohakuBlockCard(block: block)
-                                    .onTapGesture {
-                                        editing = block
-                                    }
-                                    .contextMenu {
-                                        Button {
-                                            editing = block
-                                        } label: {
-                                            Label("action.edit", systemImage: "pencil")
-                                        }
-                                        Button(role: .destructive) {
-                                            releasing = block
-                                        } label: {
-                                            Label("action.release", systemImage: "trash")
-                                        }
-                                    }
-                            }
-
-                            ghostAddCard
-                        }
+                    // id を日付にして差し替え、横スライドの遷移で滑らかに切り替える
+                    ZStack(alignment: .top) {
+                        dayContent
+                            .id(Calendar.current.startOfDay(for: displayedDay))
+                            .transition(pageTransition)
                     }
                 }
                 .padding(24)
             }
+            .scrollBounceBehavior(.basedOnSize)
             .simultaneousGesture(
                 DragGesture(minimumDistance: 30)
                     .onEnded { value in
@@ -69,9 +49,7 @@ struct TodayView: View {
             )
             .background(Color(.systemBackground))
             .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    BrandMark()
-                }
+                BrandToolbarItem()
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         isShowingInfo = true
@@ -110,6 +88,48 @@ struct TodayView: View {
         Binding(
             get: { releasing != nil },
             set: { if !$0 { releasing = nil } }
+        )
+    }
+
+    private var dayContent: some View {
+        Group {
+            if dayBlocks.isEmpty {
+                VStack(alignment: .leading, spacing: 24) {
+                    EmptyStateView(message: isToday ? "empty.today" : "empty.day")
+
+                    ghostAddCard
+                }
+            } else {
+                VStack(spacing: 12) {
+                    ForEach(dayBlocks) { block in
+                        YohakuBlockCard(block: block)
+                            .onTapGesture {
+                                editing = block
+                            }
+                            .contextMenu {
+                                Button {
+                                    editing = block
+                                } label: {
+                                    Label("action.edit", systemImage: "pencil")
+                                }
+                                Button(role: .destructive) {
+                                    releasing = block
+                                } label: {
+                                    Label("action.release", systemImage: "trash")
+                                }
+                            }
+                    }
+
+                    ghostAddCard
+                }
+            }
+        }
+    }
+
+    private var pageTransition: AnyTransition {
+        .asymmetric(
+            insertion: .move(edge: slideDirection > 0 ? .trailing : .leading).combined(with: .opacity),
+            removal: .move(edge: slideDirection > 0 ? .leading : .trailing).combined(with: .opacity)
         )
     }
 
@@ -168,7 +188,9 @@ struct TodayView: View {
     }
 
     private func shiftDay(by value: Int) {
-        if let shifted = Calendar.current.date(byAdding: .day, value: value, to: displayedDay) {
+        guard let shifted = Calendar.current.date(byAdding: .day, value: value, to: displayedDay) else { return }
+        slideDirection = value
+        withAnimation(.easeOut(duration: 0.28)) {
             displayedDay = shifted
         }
     }
